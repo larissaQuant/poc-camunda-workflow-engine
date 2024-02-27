@@ -32,7 +32,7 @@ public class PrepareTransactionDelegate implements JavaDelegate {
         ObjectMapper objectMapper = new ObjectMapper();
         String performTransactionRequestString = objectMapper.writeValueAsString(execution.getVariable("performTransactionRequest"));
         PerformTransactionRequest performTransactionRequest = objectMapper.readValue(performTransactionRequestString, PerformTransactionRequest.class);
-        String prepareTransactionString = objectMapper.writeValueAsString(performTransactionRequest.getPrepareTransaction());
+        String prepareTransactionString = objectMapper.writeValueAsString(performTransactionRequest.getPreparedTransaction());
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
