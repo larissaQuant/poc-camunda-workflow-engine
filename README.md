@@ -6,7 +6,7 @@ More details related to the structure can be found here: [Workflow Engine Orches
 
 ## Features
 
-- Perform a transaction (prepare, sign and execute a transaction) through Camunda Engine Workflow 
+- Perform a transaction (prepare, sign and execute a transaction) through Camunda Workflow Engine 
 
 ## Requirements
 
