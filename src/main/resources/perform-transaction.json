@@ -1,0 +1,31 @@
+{
+  "userToken": "eyJraWQiOiJ3T1h2SjJGckpPSUxSMCtwbGo3c1lYZGszK2QybEFYR0I4Nm9hWmNZdFo0PSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI2NWs5bGR0dXNqaWgwMDk2ZzI2bWdkdDVwZCIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoib3ZlcmxlZGdlclwvcmVhZC5zY29wZSIsImF1dGhfdGltZSI6MTcwOTA0OTMxMywiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfcWVyZnVVQzBiIiwiZXhwIjoxNzA5MDUyOTEzLCJpYXQiOjE3MDkwNDkzMTMsInZlcnNpb24iOjIsImp0aSI6IjNlNjhkYmU1LWI2NTMtNDcwMS1iNDUzLTg4NDZiNThmYjA3YSIsImNsaWVudF9pZCI6IjY1azlsZHR1c2ppaDAwOTZnMjZtZ2R0NXBkIn0.dPsr8wZ6NdTyeXq9nNSefJMbNXIVlicM06BhCEhlN3YXl1tNG5f91W6wUsvei2xKprqWkNJ87LQQeJYskiPa5Ib4rbmctqzKa9MzEOumfs1CnIWNwM_LNFqwY9lAc4EeNROJUBuXIUhKtGDO5MM--0dBbEkIl1W-skMAw7KzABLMuO-iq4-8dm7HiUFX3Z85qeiqaYqztjb6BODnX4GkYhE5bk95fq7FmtH4RMSxCp1RNpdjJrhhVnkE5KgsACAg01cSu8lI6b-B5Vhkf7XZnYA5trSft7m78I14AI9DXFSmhAh0mrsC1eTk_RoaCgUkeKJgDskkSfjkO0TeFrGNCQ",
+  "transactionSigningResponderName": "tsr-jks",
+  "keyId": "0x009B27920005F9b6Cc0Ae594331A5F53399B6185",
+  "preparedTransaction": {
+    "type": "PAYMENT",
+    "location": {
+      "technology": "Ethereum",
+      "network": "Ethereum Goerli Testnet"
+    },
+    "urgency": "normal",
+    "requestDetails": {
+      "overledgerSigningType": "overledger-javascript-library",
+      "message": "OVL Test Message",
+      "origin": [
+        {
+          "originId": "0x2ac51211bf3c22a0f859b82fabb8964a646a382b"
+        }
+      ],
+      "destination": [
+        {
+          "destinationId": "0x2ac51211bf3c22a0f859b82fabb8964a646a382b",
+          "payment": {
+            "amount": "0.02",
+            "unit": "ETH"
+          }
+        }
+      ]
+    }
+  }
+}
