@@ -1,12 +1,12 @@
 {
-  "userToken": "eyJraWQiOiJ3T1h2SjJGckpPSUxSMCtwbGo3c1lYZGszK2QybEFYR0I4Nm9hWmNZdFo0PSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI2NWs5bGR0dXNqaWgwMDk2ZzI2bWdkdDVwZCIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoib3ZlcmxlZGdlclwvcmVhZC5zY29wZSIsImF1dGhfdGltZSI6MTcwOTA0OTMxMywiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfcWVyZnVVQzBiIiwiZXhwIjoxNzA5MDUyOTEzLCJpYXQiOjE3MDkwNDkzMTMsInZlcnNpb24iOjIsImp0aSI6IjNlNjhkYmU1LWI2NTMtNDcwMS1iNDUzLTg4NDZiNThmYjA3YSIsImNsaWVudF9pZCI6IjY1azlsZHR1c2ppaDAwOTZnMjZtZ2R0NXBkIn0.dPsr8wZ6NdTyeXq9nNSefJMbNXIVlicM06BhCEhlN3YXl1tNG5f91W6wUsvei2xKprqWkNJ87LQQeJYskiPa5Ib4rbmctqzKa9MzEOumfs1CnIWNwM_LNFqwY9lAc4EeNROJUBuXIUhKtGDO5MM--0dBbEkIl1W-skMAw7KzABLMuO-iq4-8dm7HiUFX3Z85qeiqaYqztjb6BODnX4GkYhE5bk95fq7FmtH4RMSxCp1RNpdjJrhhVnkE5KgsACAg01cSu8lI6b-B5Vhkf7XZnYA5trSft7m78I14AI9DXFSmhAh0mrsC1eTk_RoaCgUkeKJgDskkSfjkO0TeFrGNCQ",
+  "userToken": "eyJraWQiOiJ3T1h2SjJGckpPSUxSMCtwbGo3c1lYZGszK2QybEFYR0I4Nm9hWmNZdFo0PSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI2NWs5bGR0dXNqaWgwMDk2ZzI2bWdkdDVwZCIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoib3ZlcmxlZGdlclwvcmVhZC5zY29wZSIsImF1dGhfdGltZSI6MTcwOTU2MTI1MywiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfcWVyZnVVQzBiIiwiZXhwIjoxNzA5NTY0ODUzLCJpYXQiOjE3MDk1NjEyNTMsInZlcnNpb24iOjIsImp0aSI6IjRjYmFiNjFmLWIxODktNGM2Ni1hMGVhLTk0YjRlZGFlMDQwZSIsImNsaWVudF9pZCI6IjY1azlsZHR1c2ppaDAwOTZnMjZtZ2R0NXBkIn0.dWwzqj91V2PPDWuYWddD_5_V9DYdEWE7ir-Wl8NFVXLAHF58nIVG6TuQdMv2MC77alix4JYjopP1axvWJRa-9bVSxcHf0KZas7qPM2qt-h-eyGkXSkRk81iiRFxGLldtDXT67mUe2E0BzItYDJU4q19C5fLD4tTgvZiIIQXs_miCehyud2o1UMK2htItVL7Uh8_ZWq9BFgZSYG2adgVgU3jJ82szCLeAOlj4NVWuiifA3WSbL2I0yYhNp_tLGHz1cJfboDyThcurVNqObyjYLrVfYAIYgJ6HzI6zb4jMKWga6d6DgsjWdGnVndwHu3ozg5ekfm7NJlAyZjHGaSKUbA",
   "transactionSigningResponderName": "tsr-jks",
   "keyId": "0x009B27920005F9b6Cc0Ae594331A5F53399B6185",
   "preparedTransaction": {
     "type": "PAYMENT",
     "location": {
       "technology": "Ethereum",
-      "network": "Ethereum Goerli Testnet"
+      "network": "polygon mumbai testnet"
     },
     "urgency": "normal",
     "requestDetails": {
@@ -14,15 +14,15 @@
       "message": "OVL Test Message",
       "origin": [
         {
-          "originId": "0x2ac51211bf3c22a0f859b82fabb8964a646a382b"
+          "originId": "0x708d1C75e5880a9942f49e17483Cb8d58118D395"
         }
       ],
       "destination": [
         {
-          "destinationId": "0x2ac51211bf3c22a0f859b82fabb8964a646a382b",
+          "destinationId": "0x708d1C75e5880a9942f49e17483Cb8d58118D395",
           "payment": {
-            "amount": "0.02",
-            "unit": "ETH"
+            "amount": "1",
+            "unit": "MATIC"
           }
         }
       ]
