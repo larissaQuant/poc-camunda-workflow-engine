@@ -103,11 +103,6 @@
       <version>7.20.0</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>org.camunda.bpm</groupId>
-      <artifactId>camunda-engine-plugin-connect</artifactId>
-      <scope>provided</scope>
-    </dependency>
   </dependencies>
 
   <repositories>
