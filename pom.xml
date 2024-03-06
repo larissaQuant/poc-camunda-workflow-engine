@@ -103,6 +103,18 @@
       <version>7.20.0</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.camunda.bpm.extension</groupId>
+      <artifactId>camunda-bpm-process-test-coverage</artifactId>
+      <version>0.3.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.camunda.bpm.extension.mockito</groupId>
+      <artifactId>camunda-bpm-mockito</artifactId>
+      <scope>test</scope>
+      <version>4.13.0</version>
+    </dependency>
   </dependencies>
 
   <repositories>

@@ -1,30 +1,47 @@
 package org.camunda.bpm.unittest;
 
+
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.poc.workflow.CamundaWorkflowApplication;
 import com.poc.workflow.dto.PerformTransactionRequest;
 import com.poc.workflow.service.PrepareTransactionDelegate;
+import org.camunda.bpm.engine.ProcessEngine;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
+import org.camunda.bpm.engine.runtime.ProcessInstance;
+import org.camunda.bpm.engine.test.Deployment;
+import org.camunda.bpm.spring.boot.starter.rest.CamundaBpmRestInitializer;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
+import org.junit.jupiter.api.TestInstance;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
-import static org.mockito.Mockito.*;
+@SpringBootTest(classes = CamundaWorkflowApplication.class, webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@Import({PrepareTransactionDelegate.class, RestTemplate.class})
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+public class PerformTransactionProcessInstanceWithSpringBootTest {
 
-@ExtendWith(MockitoExtension.class)
-public class PrepareTransactionDelegateTest {
+    @Autowired
+    ProcessEngine processEngine;
 
-    @InjectMocks
-    private PrepareTransactionDelegate delegate;
+    @MockBean
+    CamundaBpmRestInitializer restInitlzr;
 
     @Mock
     private DelegateExecution execution;
@@ -32,12 +49,15 @@ public class PrepareTransactionDelegateTest {
     @Mock
     private RestTemplate restTemplate;
 
-    @Test
-    public void testDelegateExecution() throws Exception {
-        delegate = new PrepareTransactionDelegate(restTemplate);
-        execution = mock(DelegateExecution.class);
+    String performTransactionRequestString;
 
-        String performTransactionRequestString = "{\n" +
+    String prepareTransactionResponse;
+
+    @BeforeAll
+    public void setUp() {
+        init(processEngine);
+
+        performTransactionRequestString = "{\n" +
                 "    \"userToken\": \"eyJraWQiOiJ3T1h2SjJGckpPSUxSMCtwbGo3c1lYZGszK2QybEFYR0I4Nm9hWmNZdFo0PSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI2NWs5bGR0dXNqaWgwMDk2ZzI2bWdkdDVwZCIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoib3ZlcmxlZGdlclwvcmVhZC5zY29wZSIsImF1dGhfdGltZSI6MTcwOTU2MTI1MywiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfcWVyZnVVQzBiIiwiZXhwIjoxNzA5NTY0ODUzLCJpYXQiOjE3MDk1NjEyNTMsInZlcnNpb24iOjIsImp0aSI6IjRjYmFiNjFmLWIxODktNGM2Ni1hMGVhLTk0YjRlZGFlMDQwZSIsImNsaWVudF9pZCI6IjY1azlsZHR1c2ppaDAwOTZnMjZtZ2R0NXBkIn0.dWwzqj91V2PPDWuYWddD_5_V9DYdEWE7ir-Wl8NFVXLAHF58nIVG6TuQdMv2MC77alix4JYjopP1axvWJRa-9bVSxcHf0KZas7qPM2qt-h-eyGkXSkRk81iiRFxGLldtDXT67mUe2E0BzItYDJU4q19C5fLD4tTgvZiIIQXs_miCehyud2o1UMK2htItVL7Uh8_ZWq9BFgZSYG2adgVgU3jJ82szCLeAOlj4NVWuiifA3WSbL2I0yYhNp_tLGHz1cJfboDyThcurVNqObyjYLrVfYAIYgJ6HzI6zb4jMKWga6d6DgsjWdGnVndwHu3ozg5ekfm7NJlAyZjHGaSKUbA\",\n" +
                 "    \"transactionSigningResponderName\": \"tsr-jks\",\n" +
                 "    \"keyId\": \"0x009B27920005F9b6Cc0Ae594331A5F53399B6185\",\n" +
@@ -69,7 +89,7 @@ public class PrepareTransactionDelegateTest {
                 "    }\n" +
                 "}";
 
-        String prepareTransactionResponse = "{\n" +
+        prepareTransactionResponse = "{\n" +
                 "    \"requestId\": \"4d67ee79-1001-4a67-a674-d3a38f88517f\",\n" +
                 "    \"gatewayFee\": {\n" +
                 "        \"amount\": \"0\",\n" +
@@ -93,17 +113,20 @@ public class PrepareTransactionDelegateTest {
                 "    }\n" +
                 "}";
 
+    }
+
+    @Deployment
+    @Test //Test calls PrepareTransactionDelegate successfully however, methods and requests are not mocked. How is it possible to mock them
+    public void testSetServiceResultToProcessVariables() throws JsonProcessingException {
+        Map<String,Object> variables = new HashMap<>();
         ObjectMapper objectMapper = new ObjectMapper();
-
         PerformTransactionRequest performTransactionRequest = objectMapper.readValue(performTransactionRequestString, PerformTransactionRequest.class);
-
-        when(execution.getVariable("performTransactionRequest")).thenReturn(performTransactionRequest);
+        variables.put("performTransactionRequest", performTransactionRequest);
 
         when(restTemplate.postForObject(anyString(), any(), eq(String.class)))
                 .thenReturn(String.valueOf(ResponseEntity.ok(prepareTransactionResponse)));
 
-        delegate.execute(execution);
-
-        verify(execution).setVariable(any(), any());
+        ProcessInstance pi = runtimeService().startProcessInstanceByKey("performTransaction", variables);
+        assertEquals("ok", runtimeService().getVariable(pi.getId(), "result"));
     }
 }

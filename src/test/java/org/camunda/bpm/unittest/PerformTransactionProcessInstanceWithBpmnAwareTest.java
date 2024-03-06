@@ -2,26 +2,21 @@ package org.camunda.bpm.unittest;
 
 
 import org.assertj.core.api.Assertions;
-import org.camunda.bpm.engine.RuntimeService;
-import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
-import org.camunda.bpm.engine.task.Task;
 import org.camunda.bpm.engine.test.Deployment;
 import org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests;
 import org.camunda.bpm.engine.test.junit5.ProcessEngineExtension;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.complete;
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.processInstanceQuery;
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.runtimeService;
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.task;
-import static org.camunda.bpm.model.xml.test.assertions.ModelAssertions.assertThat;
 
-public class PerformTransactionProcessInstance1Test {
+public class PerformTransactionProcessInstanceWithBpmnAwareTest {
 
-    @RegisterExtension
+    @RegisterExtension //Extension not working, since it's for Junit5 with camunda 7.20
     ProcessEngineExtension extension = ProcessEngineExtension.builder()
             .build();
 
