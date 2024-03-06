@@ -20,7 +20,7 @@ public class PerformTransactionProcessInstanceTest {
 
     @RegisterExtension
     ProcessEngineExtension extension = ProcessEngineExtension.builder()
-            .configurationResource("myConfig.xml")
+            .configurationResource("camunda.cfg.xml")
             .build();
 
     @Test
